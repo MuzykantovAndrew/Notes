@@ -1,0 +1,18 @@
+POST  http://localhost:5000/api/user
+Content-Type: application/json
+
+{
+    "name": "John",
+    "lastname": "Wick",
+    "Login": "JohnW232",
+    "password" : "ilovemydog",
+    "role" : "User",
+    "info" : "killer"
+}
+
+  
+
+
+GET  http://localhost:5000/api/user/3
+
+

@@ -5,5 +5,12 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.4"/>
     <PackageReference Include="AutoMapper" Version="9.0.0"/>
+    <PackageReference Include="Microsoft.AspNetCore.App"/>
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All"/>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0"/>
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.4"/>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.4"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.4"/>
   </ItemGroup>
 </Project>

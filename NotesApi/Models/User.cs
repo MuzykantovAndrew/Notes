@@ -11,7 +11,7 @@ namespace NotesApi.Models
         public string Lastname { get; set; }
         public string Login { get; set; }
         public ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();
-        public ICollection<Task> Tasks { get; set; } = new List<Task>();
+        public ICollection<TaskNote> TaskNotes { get; set; } = new List<TaskNote>();
         public string Password { get; set; }
         public string Info { get; set; }
         [NotMapped]
