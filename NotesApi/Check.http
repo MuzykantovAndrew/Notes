@@ -1,18 +1,31 @@
-POST  http://localhost:5000/api/user
-Content-Type: application/json
+# POST  http://localhost:5000/api/user
+# Content-Type: application/json
 
-{
-    "name": "John",
-    "lastname": "Wick",
-    "Login": "JohnW232",
-    "password" : "ilovemydog",
-    "role" : "User",
-    "info" : "killer"
-}
+# {
+#     "name": "John",
+#     "lastname": "Wick",
+#     "Login": "JohnW232222",
+#     "password" : "ilovemydog",
+#     "role" : "User",
+#     "info" : "killer"
+# }
+
+  
+# POST  http://localhost:5000/api/taskNote
+# Content-Type: application/json
+
+# {
+#     "userId": 1,
+#     "header": "To do",
+#     "description": "to do home task",
+#     # "priority" : "null",
+#     # "creationTime" : "1234",
+#     "Complete" : false
+# }
 
   
 
+GET  http://localhost:5000/api/taskNote/1
 
-GET  http://localhost:5000/api/user/3
 
 

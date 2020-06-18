@@ -11,8 +11,9 @@ namespace NotesApi.Mapping
         {
             CreateMap<User, UserResourse>()
                 .ForMember(x => x.Role, y => y.MapFrom(s => s.UserRoles.Select(z => z.Role.Name)));
+            CreateMap<TaskNote, TaskNoteResourse>();
+            CreateMap<Role, RoleResourse>();
             
-
 
         }
     }

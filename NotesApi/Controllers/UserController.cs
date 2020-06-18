@@ -26,6 +26,20 @@ namespace NotesApi.Controllers
             this.mapper = mapper;
         }
 
+        [HttpGet]
+        public async Task<ResponseResult> GetAllAsync()
+        {
+            var users = await userService.ListAsync();
+            var count = (int)Math.Ceiling((decimal)users.Count() / 10);
+            var result = new ResponseResult
+            {
+                Data = count,
+                Message = "",
+                Success = true
+            };
+            return result;
+        }
+
         [HttpGet("{id}")]
         public async Task<ResponseResult> GetAllAsync(int id)
         {
@@ -66,6 +80,10 @@ namespace NotesApi.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrorMessages());
+            var us = await userService.ListAsync();
+            var i = us.Where(x => x.Login == resource.Login);
+            if (i == null)
+                return BadRequest(ModelState.GetErrorMessages());
 
             var user = mapper.Map<SaveUserResource, User>(resource);
             var userResponse = await userService.SaveAsync(user);
@@ -82,7 +100,10 @@ namespace NotesApi.Controllers
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrorMessages());
-
+            var us = await userService.ListAsync();
+            var i = us.Where(x => x.Login == resource.Login);
+            if (i == null)
+                return BadRequest(ModelState.GetErrorMessages());
             var user = mapper.Map<SaveUserResource, User>(resource);
             var userResponse = await userService.UpdateAsync(id, user);
             var userResource = mapper.Map<User, UserResourse>(userResponse.User);

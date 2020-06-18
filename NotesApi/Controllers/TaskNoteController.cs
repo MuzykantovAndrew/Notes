@@ -29,7 +29,23 @@ namespace NotesAPI.Controllers
         public async Task<ResponseResult> GetAllAsync(int id)
         {
             var taskNotes = await taskNoteService.ListAsync();
-            var collection = taskNotes.Skip((id - 1) * ITEMS_PER_PAGE)
+             taskNotes = taskNotes.Where(x => x.UserId == id);
+            var count = (int)Math.Ceiling((decimal)taskNotes.Count() / 10);
+            var result = new ResponseResult
+            {
+                Data = count,
+                Message = "",
+                Success = true
+            };
+            return result;
+        }
+
+        [HttpGet("{page}/{id}")]
+        public async Task<ResponseResult> GetAllAsync(int page, int id)
+        {
+            var taskNotes = await taskNoteService.ListAsync();
+            taskNotes = taskNotes.Where(x => x.UserId == id);
+            var collection = taskNotes.Skip((page - 1) * ITEMS_PER_PAGE)
                                                     .Take(ITEMS_PER_PAGE);
             var pageCount = (int)Math.Ceiling((decimal)taskNotes.Count() / ITEMS_PER_PAGE);
             if (id < pageCount)
@@ -68,7 +84,7 @@ namespace NotesAPI.Controllers
             var taskNoteResource = mapper.Map<TaskNote, TaskNoteResourse>(taskNoteResponse.TaskNote);
             var result = taskNoteResponse.GetResponseResult(taskNoteResource);
             return Ok(result);
-            
+
 
         }
 
