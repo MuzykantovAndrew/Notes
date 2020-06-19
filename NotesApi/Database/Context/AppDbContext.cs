@@ -65,65 +65,11 @@ namespace NotesApi.Database.Context
                 Password = "spy",
                 Info = "I am spy"
             };
-            User u3 = new User
-            {
-                Id = 3,
-                Name = "James",
-                Lastname = "Bond",
-                Login = "jb007222",
-                Password = "spy",
-                Info = "I am spy"
-            };
-            User u4 = new User
-            {
-                Id = 4,
-                Name = "James",
-                Lastname = "Bond",
-                Login = "jb0071121",
-                Password = "spy",
-                Info = "I am spy"
-            };
-            User u5 = new User
-            {
-                Id = 5,
-                Name = "James",
-                Lastname = "Bond",
-                Login = "jb0071111",
-                Password = "spy",
-                Info = "I am spy"
-            };
-            User u6 = new User
-            {
-                Id = 6,
-                Name = "James",
-                Lastname = "Bond",
-                Login = "jb007111",
-                Password = "spy",
-                Info = "I am spy"
-            };
-            User u7 = new User
-            {
-                Id = 7,
-                Name = "James",
-                Lastname = "Bond",
-                Login = "jb00711",
-                Password = "spy",
-                Info = "I am spy"
-            };
-            User u8 = new User
-            {
-                Id = 8,
-                Name = "James",
-                Lastname = "Bond",
-                Login = "jb0071",
-                Password = "spy",
-                Info = "I am spy"
-            };
-            builder.Entity<User>().HasData(u1, u2, u3, u4, u5, u6, u7, u8);
+           
+            builder.Entity<User>().HasData(u1, u2);
 
-            Role sa = new Role { Id = 1, Name = "SuperAdmin" };
-            Role admin = new Role { Id = 2, Name = "Admin" };
-            Role user = new Role { Id = 3, Name = "User" };
+            Role admin = new Role { Id = 1, Name = "Admin" };
+            Role user = new Role { Id = 2, Name = "User" };
 
             UserRole ur1 = new UserRole { UserId = 1, RoleId = 1 };
             UserRole ur2 = new UserRole { UserId = 1, RoleId = 2 };

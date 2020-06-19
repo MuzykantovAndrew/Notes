@@ -76,7 +76,7 @@ namespace NotesApi
             services.AddScoped<IRepository<UserRole>, UserRoleRepository>();
             services.AddScoped<IUserRoleService, UserRoleService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-           
+           services.AddScoped<IAuthenticationService,AuthenticationService>();
 
 
             services.AddDbContext<AppDbContext>(options =>

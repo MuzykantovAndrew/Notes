@@ -25,7 +25,30 @@
 
   
 
-GET  http://localhost:5000/api/taskNote/1
+# POST  http://localhost:5000/api/auth/authenticate
+# Content-Type: application/json
+
+# {
+#     "Login": "jb00722",
+#     "Password" : "spy",
+#     "name": "John",
+#     "lastname": "Wick",
+#     "role" : "User",
+#     "info" : "killer"
+# }
+
+
+POST  http://localhost:5000/api/taskNote
+Content-Type: application/json
+
+{
+    "Header": "jb00722",
+    "Description" : "spy",
+    "userId": 1,
+    "Complete": false,
+    "Priority" : "important",
+    "CreationTime" : "2012-01-26T13:51:50.417-07:00"
+}
 
 
 
