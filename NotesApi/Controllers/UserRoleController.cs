@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NotesApi.Extentions;
 using NotesApi.Models;
@@ -11,7 +12,9 @@ using NotesApi.Services.Interfaces;
 
 namespace NotesApi.Controllers
 {
-    public class UserRoleController: Controller
+    [Authorize(Roles = "Admin")]
+    [Route("/api/[controller]")]
+    public class UserRoleController : Controller
     {
         private readonly IUserRoleService userRoleService;
         private readonly IMapper mapper;
@@ -26,8 +29,8 @@ namespace NotesApi.Controllers
         {
             var users = await userRoleService.ListUsersByRoleAsync(id);
             var Resourses = mapper.Map<IEnumerable<User>, IEnumerable<UserResourse>>(users);
-          
-            var result = new ResponseResult 
+
+            var result = new ResponseResult
             {
                 Success = true,
                 Message = "",
@@ -40,7 +43,7 @@ namespace NotesApi.Controllers
 
         [HttpPost]
         [Route("setrole")]
-        public async Task<IActionResult> SetRole([FromBody]SaveUserRoleResourse Resourse)
+        public async Task<IActionResult> SetRole([FromBody] SaveUserRoleResourse Resourse)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrorMessages());
@@ -64,5 +67,5 @@ namespace NotesApi.Controllers
             return Ok(result);
         }
     }
-   
+
 }

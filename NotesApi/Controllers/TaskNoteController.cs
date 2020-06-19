@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NotesApi.Extentions;
 using NotesApi.Models;
@@ -13,6 +14,7 @@ using NotesApi.Services.Interfaces;
 
 namespace NotesAPI.Controllers
 {
+    [Authorize(Roles = "Admin,User")]
     [Route("/api/[controller]")]
     public class TaskNoteController : Controller
     {

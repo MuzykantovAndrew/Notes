@@ -1,5 +1,5 @@
 using System;
-using NotesApi.Models.Enum;
+
 
 namespace NotesApi.Resourse.Save
 {
@@ -9,7 +9,7 @@ namespace NotesApi.Resourse.Save
 
         public string Header { get; set; }
         public string Description { get; set; }
-        public PriorityTypes? Priority { get; set; }
+        public string Priority { get; set; }
         public DateTime CreationTime { get; set; }
        
         public bool Complete { get; set; }

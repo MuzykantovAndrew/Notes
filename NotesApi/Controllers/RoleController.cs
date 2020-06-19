@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NotesApi.Extentions;
 using NotesApi.Models;
@@ -11,6 +12,8 @@ using NotesApi.Services.Interfaces;
 
 namespace NotesApi.Controllers
 {
+    [Authorize(Roles = "Admin")]
+    [Route("/api/[controller]")]
     public class RoleController : Controller
     {
         private readonly IRoleService roleService;
@@ -52,7 +55,7 @@ namespace NotesApi.Controllers
 
         }
 
-        
+
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAsync(int id, [FromBody] SaveRoleResourse resource)
         {
@@ -66,9 +69,9 @@ namespace NotesApi.Controllers
             return Ok(result);
         }
 
-         
+
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteAsync(int id) 
+        public async Task<IActionResult> DeleteAsync(int id)
         {
             var roleResponse = await roleService.DeleteAsync(id);
             var roleResource = mapper.Map<Role, RoleResourse>(roleResponse.Role);
